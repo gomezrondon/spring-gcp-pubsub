@@ -1,3 +1,7 @@
-POST http://localhost:8080/publish/otro
+POST http://localhost:8080/publish/perdro%20perez
+
+###
+
+POST http://localhost:8080/publish/mario%20smith
 
 ###
