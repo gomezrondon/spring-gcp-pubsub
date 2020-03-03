@@ -32,12 +32,7 @@ ext {
 
 dependencies {
 	compile("org.springframework.cloud:spring-cloud-gcp-starter-pubsub")
-	implementation 'org.springframework.cloud:spring-cloud-gcp-pubsub-stream-binder'
-
-	implementation 'org.springframework.cloud:spring-cloud-stream'
 	compile("org.springframework.boot:spring-boot-starter-web")
-
-	compile("org.springframework.integration:spring-integration-core")
 
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 }

@@ -1,23 +1,22 @@
 package com.example.demo;
 
-import org.springframework.integration.support.MessageBuilder;
-import org.springframework.messaging.MessageChannel;
+import org.springframework.cloud.gcp.pubsub.core.PubSubTemplate;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
-// https://dzone.com/articles/bootiful-gcp-spring-cloud-stream-with-google-cloud
+
 @RestController
 public class PublisherController {
 
-    private final MessageChannel outgoing;
+    private final PubSubTemplate pubSubTemplate;
 
-    public PublisherController(Channels channels) {
-        outgoing = channels.outgoing();
+    public PublisherController(  PubSubTemplate pubSubTemplate) {
+        this.pubSubTemplate = pubSubTemplate;
     }
     @PostMapping("/publish/{name}")
     public void publish(@PathVariable String name) {
-        outgoing.send(MessageBuilder.withPayload("Hello " + name + "!").build());
+        pubSubTemplate.publish("reservations","Hello " + name + "!");
     }
 }
